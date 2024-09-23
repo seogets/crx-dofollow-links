@@ -1,0 +1,59 @@
+@import "cal-sans";
+@import "@fontsource-variable/inter";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 210 20% 98%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+
+    --success: 142 72% 29%;
+    --success-foreground: 0 0% 98%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 48 96% 89%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --clicks: 217, 91.2%, 59.8%; /* #3b83f6 */
+    --impressions: 260, 54%, 60%; /* #8762D0 */
+    --position: 27.8, 91.7%, 47.5%; /* #e8710a */
+    --ctr: 174, 100%, 27%; /* #008a7c */
+
+    --radius: 0.5rem;
+  }
+}
+
+.link {
+  @apply inline-flex items-center text-clicks;
+}
+
+.link:hover {
+  @apply underline;
+}
