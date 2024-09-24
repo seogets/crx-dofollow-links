@@ -4,7 +4,7 @@ import { defineConfig } from "wxt";
 export default defineConfig({
   modules: ["@wxt-dev/module-react"],
   manifest: {
-    name: "Website Page Counter for SEO",
-    permissions: ["contextMenus", "activeTab"],
+    name: "Dofollow Links for SEO",
+    permissions: ["storage", "contextMenus"],
   },
 });

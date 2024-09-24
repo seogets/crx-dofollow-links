@@ -1,14 +1,14 @@
 export default defineBackground(() => {
   chrome.runtime.onInstalled.addListener(async () => {
     chrome.contextMenus.create({
-      id: "counter",
-      title: "Website Page Counter",
+      id: "dofollow",
+      title: "Dofollow Links",
       type: "normal",
     });
   });
 
   chrome.contextMenus.onClicked.addListener((info, tab) => {
-    if (info.menuItemId === "counter") {
+    if (info.menuItemId === "dofollow") {
       chrome.action.openPopup();
     }
   });

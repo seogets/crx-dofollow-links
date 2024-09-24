@@ -8,7 +8,7 @@ export function Footer() {
       <a className="text-blue-600 font-semibold group-hover:underline">
         SEO Gets
       </a>{" "}
-      — like Google Search Console, but{" "}
+      — like Google Search Console but{" "}
       <span className="font-semibold">100x</span> better!
     </a>
   );

@@ -1,41 +1,74 @@
 import { Footer } from "@/components/Footer";
-import { PageCounter } from "@/components/PageCounter";
 import { useState } from "react";
-
-function useCurrentDomain(): string | null | undefined {
-  const [domain, setDomain] = useState<string | null | undefined>(undefined);
-
-  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-    const tabUrl = tabs[0].url;
-    if (!tabUrl) {
-      return;
-    }
-
-    const url = new URL(tabUrl);
-    url.pathname = "/";
-
-    if (url.protocol === "http:" || url.protocol === "https:") {
-      setDomain(url.toString());
-    } else {
-      setDomain(null);
-    }
-  });
-
-  return domain;
-}
+import { localDofollowEnabled, localNofollowEnabled } from "@/utils/storage";
 
 function App() {
-  const domain = useCurrentDomain();
+  const [dofollow, setDofollow] = useStorageValue(localDofollowEnabled, false);
+  const [nofollow, setNofollow] = useStorageValue(localNofollowEnabled, false);
+
+  const toggleDofollow = () => setDofollow(!dofollow);
+  const toggleNofollow = () => setNofollow(!nofollow);
 
   return (
-    <div className="min-w-[30rem]">
+    <div className="min-w-[24rem]">
       <div className="px-2">
-        <h1 className="text-lg font-title text-center my-2">
-          Website Page Counter
-        </h1>
+        <h1 className="text-lg font-title text-center my-2">Dofollow Links</h1>
 
-        {domain !== undefined && <PageCounter domain={domain} />}
+        <div className="flex items-center justify-between mx-auto mt-2 w-[14rem]">
+          <div>
+            <div className="flex items-center gap-1">
+              <input
+                type="checkbox"
+                className="size-4"
+                checked={dofollow}
+                id="Dofollow"
+                onChange={toggleDofollow}
+              />
+              <label
+                htmlFor="Dofollow"
+                className="text-base tracking-tighter select-none leading-none"
+                style={{ outline: "2px dashed #22c55e", outlineOffset: "0px" }}
+              >
+                Dofollow
+              </label>
+            </div>
+          </div>
+
+          <div>
+            <div className="flex items-center gap-1">
+              <input
+                type="checkbox"
+                className="size-4"
+                checked={nofollow}
+                id="Nofollow"
+                onChange={toggleNofollow}
+              />
+              <label
+                htmlFor="Nofollow"
+                className="text-base tracking-tighter select-none leading-none"
+                style={{ outline: "2px dashed #ef4444", outlineOffset: "0px" }}
+              >
+                Nofollow
+              </label>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <p className="text-muted-foreground text-xs text-balance text-center mt-2">
+        Only external links are highlighted.
+      </p>
+
+      <p className="text-muted-foreground text-xs border-t mt-2 p-2 text-balance text-center">
+        Any suggestions or feedback? Reach out so we can make this extension
+        better {"→ "}
+        <a
+          href="mailto:extensions@seogets.com"
+          className="link hover:underline"
+        >
+          extensions@seogets.com
+        </a>
+      </p>
 
       <Footer />
     </div>
