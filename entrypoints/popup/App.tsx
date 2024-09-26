@@ -34,7 +34,7 @@ function IgnoredDomainsSetting() {
 
   return (
     <div className="w-full p-2">
-      <div className="grid grid-cols-2 gap-2 mb-2">
+      <div className="grid grid-cols-1 gap-2 mb-2">
         <button
           className="bg-clicks text-background text-sm py-1 rounded"
           onClick={() => {

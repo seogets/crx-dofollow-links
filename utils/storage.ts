@@ -17,7 +17,7 @@ export const localNofollowEnabled = storage.defineItem<boolean>(
 export const localIgnoredHostnames = storage.defineItem<string[]>(
   "local:IgnoredHostnames",
   {
-    fallback: ["google.com"],
+    fallback: ["www.google.com"],
   }
 );
 
