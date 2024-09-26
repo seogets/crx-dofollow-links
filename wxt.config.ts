@@ -5,6 +5,6 @@ export default defineConfig({
   modules: ["@wxt-dev/module-react"],
   manifest: {
     name: "Dofollow Links for SEO",
-    permissions: ["storage", "contextMenus"],
+    permissions: ["storage", "contextMenus", "activeTab"],
   },
 });
