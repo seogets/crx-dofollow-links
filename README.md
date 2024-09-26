@@ -9,11 +9,11 @@ Highlight Dofollow and Nofollow External Links on any websites.
 
 # Installation
 
-<a href="https://chromewebstore.google.com/detail/kubernetes-dark-mode/adaahalingfoehcnkgcmicpfbonmkehn">
+<a href="https://chromewebstore.google.com/detail/dofollow-links-for-seo/opepfpjeogkbgeigkbepobceinnfmjdd">
 <img src="./crx.png" alt="Chrome Web Store">
 </a>
 
-[https://chromewebstore.google.com/detail/kubernetes-dark-mode/adaahalingfoehcnkgcmicpfbonmkehn](https://chromewebstore.google.com/detail/kubernetes-dark-mode/adaahalingfoehcnkgcmicpfbonmkehn)
+[https://chromewebstore.google.com/detail/dofollow-links-for-seo/opepfpjeogkbgeigkbepobceinnfmjdd](https://chromewebstore.google.com/detail/dofollow-links-for-seo/opepfpjeogkbgeigkbepobceinnfmjdd)
 
 ## 📃 License
 
