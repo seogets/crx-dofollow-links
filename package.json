@@ -2,7 +2,7 @@
   "name": "crx-dofollow-links",
   "description": "Highlight dofollow links as you browse the web.",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "scripts": {
     "dev": "wxt",

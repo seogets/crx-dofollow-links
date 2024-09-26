@@ -14,6 +14,13 @@ export const localNofollowEnabled = storage.defineItem<boolean>(
   }
 );
 
+export const localIgnoredHostnames = storage.defineItem<string[]>(
+  "local:IgnoredHostnames",
+  {
+    fallback: ["google.com"],
+  }
+);
+
 export function useStorageValue<T>(
   item: WxtStorageItem<T, {}>,
   defaultValue: T

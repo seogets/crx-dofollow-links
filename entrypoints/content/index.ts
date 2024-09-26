@@ -1,12 +1,13 @@
-import { localDofollowEnabled } from "@/utils/storage";
-
-function domain(u: URL | string): string {
-  return new URL(u).host.split(".").slice(-2).join(".");
-}
+import { localIgnoredHostnames, localDofollowEnabled } from "@/utils/storage";
 
 const isExternal = (link: HTMLAnchorElement) => {
   try {
-    return domain(link.href) !== domain(location.href);
+    const linkDomain = new URL(link.href).host.split(".").slice(-2).join(".");
+    const currentDomain = new URL(location.href).host
+      .split(".")
+      .slice(-2)
+      .join(".");
+    return linkDomain !== currentDomain;
   } catch {
     return false;
   }
@@ -21,13 +22,20 @@ export default defineContentScript({
   matches: ["*://*/*"],
 
   async main() {
-    let [isDofollowEnabled, isNofollowEnabled] = await Promise.all([
-      localDofollowEnabled.getValue(),
-      localNofollowEnabled.getValue(),
-    ]);
+    let [isDofollowEnabled, isNofollowEnabled, ignoredHostnames] =
+      await Promise.all([
+        localDofollowEnabled.getValue(),
+        localNofollowEnabled.getValue(),
+        localIgnoredHostnames.getValue(),
+      ]);
 
     localDofollowEnabled.watch((value) => {
       isDofollowEnabled = value;
+      searchAndHighlight();
+    });
+
+    localIgnoredHostnames.watch((value) => {
+      ignoredHostnames = value;
       searchAndHighlight();
     });
 
@@ -43,7 +51,7 @@ export default defineContentScript({
         link.style.outline = "";
         link.style.outlineOffset = "";
 
-        if (!isExternal(link)) {
+        if (!isExternal(link) || ignoredHostnames.includes(location.hostname)) {
           continue;
         }
 
