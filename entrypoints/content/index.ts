@@ -2,6 +2,11 @@ import { localIgnoredHostnames, localDofollowEnabled } from "@/utils/storage";
 
 const isExternal = (link: HTMLAnchorElement) => {
   try {
+    const isHttp =
+      link.href.startsWith("http:") || link.href.startsWith("https:");
+
+    if (!isHttp) return false;
+
     const linkDomain = new URL(link.href).host.split(".").slice(-2).join(".");
     const currentDomain = new URL(location.href).host
       .split(".")
@@ -51,7 +56,11 @@ export default defineContentScript({
         link.style.outline = "";
         link.style.outlineOffset = "";
 
-        if (!isExternal(link) || ignoredHostnames.includes(location.hostname)) {
+        if (
+          !link.href ||
+          !isExternal(link) ||
+          ignoredHostnames.includes(location.hostname)
+        ) {
           continue;
         }
 
